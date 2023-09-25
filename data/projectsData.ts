@@ -1,5 +1,11 @@
 const projectsData = [
   {
+    title: 'Domain Designer - 2023',
+    description: `NO-CODE Domain Designer for Typescript applications built under the DDD - Domain Driven Design principles.`,
+    imgSrc: '/static/images/dd/01.png',
+    href: '/blog/domain-designer',
+  },
+  {
     title: 'Imóvel Manager - 2009',
     description: `Imóvel Manager was a Real Estate ERP software offered by my startup company as SaaS starting in 2009. From client management, up to financial automation, Imóvel Manager supported 2 hundred agencies paying small rates for cloud software ...`,
     imgSrc: '/static/images/cashflow1.png',
