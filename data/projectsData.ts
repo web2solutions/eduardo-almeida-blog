@@ -13,15 +13,9 @@ const projectsData = [
   },
   {
     title: 'PaypalREST - 2013',
-    description: `The PaypalREST is a Perl module built entire by me to support the entire financial and billing operations for the first version of MAP (My Adoption Portal).
-
-    - It POC is published here: <a href="https://github.com/web2solutions/PaypalREST">https://github.com/web2solutions/PaypalREST</a>
-    
-    Company CAIRS Solutions
-    
-    Skills: Perl, web crawling, PayPal, API consuming.`,
+    description: `The PaypalREST is a Perl module built entire by me to support the entire financial and billing operations for the first version of MAP (My Adoption Portal).`,
     imgSrc: '/static/images/paypal.png',
-    href: 'https://github.com/web2solutions/PaypalREST',
+    href: '/blog/paypalrest',
   },
 ]
 
