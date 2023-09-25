@@ -25,6 +25,18 @@ Skills: Algorithm Design · Front-End Development · Node.js · Javascript · Pe
     imgSrc: '/static/images/dhx.jpeg',
     href: 'https://github.com/web2solutions/DHTMLX-Perl',
   },
+  {
+    title: 'PaypalREST - 2013',
+    description: `The PaypalREST is a Perl module built entire by me to support the entire financial and billing operations for the first version of MAP (My Adoption Portal).
+
+    - It POC is published here: <https://github.com/web2solutions/PaypalREST>
+    
+    Company CAIRS Solutions
+    
+    Skills: Perl, web crawling, PayPal, API consuming.`,
+    imgSrc: '/static/images/paypal.png',
+    href: 'https://github.com/web2solutions/PaypalREST',
+  },
 ]
 
 export default projectsData
