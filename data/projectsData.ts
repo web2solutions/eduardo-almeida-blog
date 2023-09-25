@@ -7,15 +7,9 @@ const projectsData = [
   },
   {
     title: 'DHTMLX Perl - 2012',
-    description: `The DHTMLX-Perl package is the Perl, open source replacement for the <a href="https://docs.dhtmlx.com/connector__php__index.html#:~:text=DHTMLX%20connector%20is%20a%20helper,%2C%20filtering%2C%20validation%2C%20etc">DHTMLX PHP connector</a>.
-    <br>
-    The DHTMLX PHP is the backend distribution that powers the version 4 and 5 of the DHTMLX framework (<www.dhtmlx.com>)
-    
-    I created this package to be able to use all DHTMLX features under the Perl ecosystem.
-    
-    Skills: Perl, Vanilla Javascript, ES5, PostgreSQL, MS-SQL, MySQL, Oracle, CGI, PSGI, ASP, IIS, Apache, Windows, Linux, Mojolicious`,
+    description: `The DHTMLX-Perl package is the Perl, open source replacement for the DHTMLX PHP connector ...`,
     imgSrc: '/static/images/dhx.jpeg',
-    href: 'https://github.com/web2solutions/DHTMLX-Perl',
+    href: '/blog/dhx-perl',
   },
   {
     title: 'PaypalREST - 2013',
