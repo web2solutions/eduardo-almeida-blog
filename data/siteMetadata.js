@@ -5,7 +5,7 @@ const siteMetadata = {
   headerTitle: 'Eduardo Almeida',
   description: 'A blog created with Next.js and Tailwind.css',
   language: 'en-us',
-  theme: 'system', // system, dark or light
+  theme: 'dark', // system, dark or light
   siteUrl: 'https://eduardo-almeida-blog.vercel.app/',
   siteRepo: 'https://github.com/web2solutions/eduardo-almeida-blog',
   siteLogo: '/static/images/logo.svg',
