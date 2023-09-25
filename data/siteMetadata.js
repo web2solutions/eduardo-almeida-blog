@@ -6,9 +6,9 @@ const siteMetadata = {
   description: 'A blog created with Next.js and Tailwind.css',
   language: 'en-us',
   theme: 'system', // system, dark or light
-  siteUrl: 'https://tailwind-nextjs-starter-blog.vercel.app',
+  siteUrl: 'https://eduardo-almeida-blog.vercel.app/',
   siteRepo: 'https://github.com/web2solutions/eduardo-almeida-blog',
-  siteLogo: '/static/images/logo.png',
+  siteLogo: '/static/images/logo.svg',
   socialBanner: '/static/images/twitter-card.png',
   mastodon: 'https://mastodon.social/@mastodonuser',
   email: 'web2solucoes@gmail.com',
