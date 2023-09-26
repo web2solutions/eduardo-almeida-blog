@@ -3,7 +3,7 @@ const siteMetadata = {
   title: 'Eduardo Almeida - Personal Blog',
   author: 'Eduardo Almeida',
   headerTitle: 'Eduardo Almeida',
-  description: 'A blog created with Next.js and Tailwind.css',
+  description: 'This is my personal blog created with Next.js and Tailwind.css',
   language: 'en-us',
   theme: 'dark', // system, dark or light
   siteUrl: 'https://eduardo-almeida-blog.vercel.app/',
