@@ -59,13 +59,17 @@ Caso a fila esteja `vazia` e haja a tentativa de um `desenfileiramento` deve oco
 
 Suponha que nossa fila está armazenada em um vetor, o tamanho é `N`, onde `N` é o número de elementos na fila.
 
+```C
         fila[0..N]
+```
 
 O tipo de dados dos elementos do vetor é irrelevante.
 
 Digamos que a parte do vetor ocupada pela fila é:
 
+```C
         fila[C..F]
+```
 
 O índice `C` indica a primeira posição ocupada do vetor, em outras palavras, o index que represeta o primeiro item da fila. E `F` é o índice na posição final da fila.
 
@@ -408,21 +412,27 @@ while (fila.tamanho <= max_items) {
 
 - `Fila usando um Vetor` - 500.000 itens
 
+```bash
       $ ts-node ts-node ./src/Filas/benchmark/FilaVetor.ts
       Tempo de execução: 77.337266 ms
       consumo aproximado: 127.77216339111328 MB
+```
 
 - `Fila usando um Map` - 500.000 itens
 
+```bash
       $ ts-node ts-node ./src/Filas/benchmark/FilaMap.ts
       Tempo de execução: 165.776193 ms
       consumo aproximado: 147.30326080322266 MB
+````
 
 - `Fila usando Lista Ligada` - 500.000 itens
 
+```bash
       $ ts-node ts-node ./src/Filas/benchmark/FilaLigada.ts
       Tempo de execução: 115.32131898403168 ms
       consumo aproximado: 135.43413543701172 MB
+```
 
 ## Repositório
 
