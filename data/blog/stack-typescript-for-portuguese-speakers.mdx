@@ -49,13 +49,17 @@ Independentemente do tamanho N da pilha, numa pilha ideal, operações básicas 
 
 Suponha que nossa pilha está armazenada em um vetor, onde `N` é o capacidade ou comprimento máximo da pilha:
 
+```C
         pilha[0..N-1]
+```
 
 O tipo de dados dos elementos do vetor é irrelevante.
 
 Digamos que a parte do vetor ocupada pela pilha é:
 
+```C
         pilha[0..t-1]
+```
 
 O índice `t` indica a primeira posição vaga do vetor e `t-1` é o índice do topo da pilha.
 
@@ -95,14 +99,18 @@ Caso a pilha esteja `cheia` e haja a tentativa de um `empilhamento` deve ocorrer
 
   Com isso fica aberta a possibilidade de usar o início do vetor como topo e o final como base da pilha. Darei o nome á essa implementação de `Pilha inversa` e que possui tempo de `O(n)` no pior cenário, pois ao remover o primeiro item do vetor, o mesmo é completamente redimensionado.
   
+```C
       topo = Pilha[0]
       base = Pilha[Pilha.length - 1]
+```
   
   Porém, na implementação á seguir, o final do vetor será o topo e o começo será a base da pilha.
 
+```C
       topo = Pilha[Pilha.length - 1]
       base = Pilha[0]
-  
+```
+
   Implementarei o algorítimo da pilha dessa forma visando uma maior performance. Em Javascript, ao lidar com `vetores` contendo muitos ítens, é mais custoso manipular os primeiros elementos do que os últimos.
 
  ***`Capacidade da Pilha`***
