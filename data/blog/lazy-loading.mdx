@@ -103,17 +103,62 @@ The function will receive tow parameters:
 
 
 ```javascript
-function lazyLoad(url, callback) { 
-  // .....
-}
+      function getFileType(url) {
+        return url.indexOf(".css") > -1 ? "css" : "js";
+      }
 
-lazyLoad('/js/MyModuleName1.css', function() {
-  lazyLoad('/js/MyModuleName1.js', function(){
-    console.log('files are ready');
-    MyModuleName1.render();
-  })
-})
+      function lazyLoad(url, callback) {
+        const fileType = getFileType(url);
+        let node = undefined;
 
+        // create the proper HTML NODE type
+        if (fileType === "js") {
+          node = document.createElement("script");
+          node.setAttribute("type", "text/javascript");
+          node.setAttribute("src", url);
+        } else {
+          node = document.createElement("link");
+          node.setAttribute("rel", "stylesheet");
+          node.setAttribute("type", "text/css");
+          node.setAttribute("href", url);
+        }
+
+        // track the loading process of the file
+        if (node.readyState) {
+          // IE 6-8 support
+          node.onreadystatechange = function () {
+            if (node.readyState == "loaded" || node.readyState == "complete") {
+              node.onreadystatechange = null;
+              console.log("node loaded");
+              callback();
+            }
+          };
+        } else {
+          // modern browsers
+          if (fileType === "css") {
+            console.log("css node loaded");
+            callback();
+          } else {
+            //console.log("no ie");
+            node.onload = function () {
+              console.log("js node loaded");
+              callback();
+            };
+          }
+        }
+
+        // append new HTML node onto HTML DOCUMENT HEAD
+        document.getElementsByTagName("head")[0].appendChild(node);
+      }
+
+      window.onload = () => {
+        lazyLoad("/MyModuleName1.css", function () {
+          lazyLoad("/MyModuleName1.js", function () {
+            console.log("files are ready");
+            MyModuleName1.render();
+          });
+        });
+      };
 ```
 
 ### ES6
@@ -124,6 +169,67 @@ The function will receive one parameter:
 
 -`url` - relative path of the file.
 
+```javascript
+      function getFileType(url) {
+        return url.includes(".css") ? "css" : "js";
+      }
+
+      function lazyLoad(url) {
+        return new Promise((resolve, reject) => {
+          const fileType = getFileType(url);
+          let node = undefined;
+
+          // create the proper HTML NODE type
+          if (fileType === "js") {
+            node = document.createElement("script");
+            node.setAttribute("type", "text/javascript");
+            node.setAttribute("src", url);
+          } else {
+            node = document.createElement("link");
+            node.setAttribute("rel", "stylesheet");
+            node.setAttribute("type", "text/css");
+            node.setAttribute("href", url);
+          }
+
+          // track the loading process of the file
+          if (node.readyState) {
+            // IE 6-8 support
+            node.onreadystatechange = function () {
+              if (
+                node.readyState == "loaded" ||
+                node.readyState == "complete"
+              ) {
+                node.onreadystatechange = null;
+                console.log("node loaded");
+                resolve();
+              }
+            };
+          } else {
+            // modern browsers
+            if (fileType === "css") {
+              console.log("css node loaded");
+              resolve();
+            } else {
+              //console.log("no ie");
+              node.onload = function () {
+                console.log("js node loaded");
+                resolve();
+              };
+            }
+          }
+
+          // append new HTML node onto HTML DOCUMENT HEAD
+          document.getElementsByTagName("head")[0].appendChild(node);
+        });
+      }
+
+      window.onload = async () => {
+        await lazyLoad("/MyModuleName1.css");
+        await lazyLoad("/MyModuleName1.js");
+        console.log("files are ready");
+        MyModuleName1.render();
+      };
+```
 
 [![Edit interesting-chatterjee-l3wnd4](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/p/sandbox/github/codesandbox-app/static-template/tree/master/)
 
