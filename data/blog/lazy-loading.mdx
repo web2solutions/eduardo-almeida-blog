@@ -1,13 +1,13 @@
--- -
+---
 title: 'What is lazy loading and why you should know how it works behind the scenes'
 date: '2024-01-05'
 tags: ['SPA', 'PWA', 'frontend', 'DOM API', 'Single Page Application', 'Lazy Loading']
 draft: false
 summary: '"Lazy loading is a strategy to identify resources as non-blocking (non-critical) and load these only when needed." MDN, Dec 20, 2023'
 layout: PostSimple
-  -- -
+---
 
-  # Lazy Loading
+# Lazy Loading
 
 Lazy Loading is a popular and important technique
 for frontend development with Javascript.This technique is nothing more than loading and
@@ -19,7 +19,7 @@ focus, their implementation may vary.
 The fact is that lazy loading is a concept agnostic to any framework, and because it is simple to implement, it should be known to each and every
 frontend developer and we should not expect MVC or * V * type frameworks / libraries to officially support this functionality.
 
-# # History
+## History
 
 From my own experience, I can mention that the lazy loading technique has existed and been applied in frontend development
 for at least 16 years, in an era dominated by libraries and frameworks such as Dojo, EXTJS, DHTMLX and JQuery and when, an in -depth knowledge of the DOM API and XMLHttp was necessary
@@ -32,9 +32,9 @@ if they existed, they were just being born.
 
 The most common foundational problems in developing large applications would be such as:
 
-  -Scope issues.Pollution and conflict. -
-  Lack of a support system
-for module distribution and consumption.
+- Scope issues.Pollution and conflict.
+
+- Lack of a support system for module distribution and consumption.
 
 Last but not least, internet speed was drastically slower and resources such as RAM and CPU were also drastically inferior to what we have access to today.
 
@@ -44,8 +44,8 @@ for large or complex frontend applications.
 An example is this "Cash Flow"
 module, from an ERP initially created in 2009. https: //dhtmlx.com/blog/customer-spotlight-dhtmlx-cash-flow/
 
-  As a developer from that project, I can say that the ERP frontend, which by nature is a large application, consisted of a large number of modules,
-  javascript files loaded on demand.
+As a developer from that project, I can say that the ERP frontend, which by nature is a large application, consisted of a large number of modules,
+javascript files loaded on demand.
 
 In 2009 there were already a considerable number of Single Page Applications being offered as SaaS.
 
@@ -53,23 +53,19 @@ We can therefore conclude that, more important than today, Lazy Loading was, and
 for building large or complex frontend
 applications and offering better user experiences when it comes to speed and performance rendering.
 
-# # Understanding how Lazy Loading works.
+## Understanding how Lazy Loading works.
 
 `Requirements of a Lazy Loader`
 
--
-Ability to asynchronously load Javascript files. -
-  Ability to asynchronously load CSS files. -
-  The browser must parse and execute the files. -
-  The loader must offer an mechanism that notify it callers when the `loaded file`
-was completely parsed and executed given the global scope;
+- Ability to asynchronously load Javascript files.
+- Ability to asynchronously load CSS files. 
+- The browser must parse and execute the files. 
+- The loader must offer an mechanism that notify it callers when the `loaded file` was completely parsed and executed given the global scope;
 
-Now that we have a list of the requirements,
-  let 's see how would be, a common structure of a SPA that contains javascript and css files:
+Now that we have a list of the requirements, let 's see how would be, a common structure of a SPA that contains javascript and css files:
 
 
-``
-`html
+```html
 <!DOCTYPE html>
 <html lang="en">
   <head>
@@ -81,8 +77,7 @@ Now that we have a list of the requirements,
     <div id="root"></div>
   </body>
 </html>
-`
-``
+```
 
 With basic knowledge about the DOM API, we can say that, to parse both files, Javascript and CSS, the HTML file calls the dependencies through the
 use of two types of HTML Nodes, `script`
@@ -91,30 +86,23 @@ for the respective nodes.
 
 Now that we know how the browser parses files, without reinventing the wheel, we can think about how to implement a Lazy Loading mechanism using Javascript.
 
-To start a draft,
-let 's agree that we need to implement a `lazyLoad` function that will be called to asynchronously load a list of files.
+To start a draft, let 's agree that we need to implement a `lazyLoad` function that will be called to asynchronously load a list of files.
 
 Since we are talking about different versions of Javascript, I will provide both examples in ES5 and ES6.
 
 
-# # # ES5
+### ES5
 
 In ES5 we don 't have promises, so, to track the complete loading process of the file, and then notify the `loader caller`, we need to rely on callbacks.
 
-The
+The function will receive tow parameters:
 
-function will receive tow parameters:
+- `url` - relative path of the file.
 
-  -`url` - relative path of the file.
-
-  -
-  `callback` - callback
-
-function that will be called when the file is completely loaded.
+- `callback` - callback function that will be called when the file is completely loaded.
 
 
-``
-`javascript
+```javascript
 function lazyLoad(url, callback) { 
   // .....
 }
@@ -126,18 +114,15 @@ lazyLoad('/js/MyModuleName1.css', function() {
   })
 })
 
-`
-``
+```
 
-# # # ES6
+### ES6
 
 In ES6 we have promises and async /await, and it will simplify the process and avoid the callback hell.
 
-The
+The function will receive one parameter:
 
-function will receive one parameter:
-
-  -`url` - relative path of the file.
+-`url` - relative path of the file.
 
 
 [![Edit interesting-chatterjee-l3wnd4](https://codesandbox.io/static/img/play-codesandbox.svg)](https://codesandbox.io/p/sandbox/github/codesandbox-app/static-template/tree/master/)
