@@ -97,14 +97,14 @@ Pode ser mais vantajoso utlizar o bubble sort quando sabe-se que boa parte do co
                     vetor[iteracaoSecundaria + 1] = posicaoAtual;
                     vetor[iteracaoSecundaria] = proximaPosicao;
                     // sair do loop
-                    iteracaoSecundaria = numeroElementosVetor;
-                } else {
-                    iteracaoSecundaria++;
+                    totalMinimoIteracoes = numeroElementosVetor;
                 }
+                iteracaoSecundaria++;
             }
             totalMinimoIteracoes++;
         }
         
+
         return vetor;
     }
 
