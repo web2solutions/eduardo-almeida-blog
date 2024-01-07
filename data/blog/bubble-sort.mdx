@@ -79,3 +79,34 @@ Pode ser mais vantajoso utlizar o bubble sort quando sabe-se que boa parte do co
     console.log( bubbleSort([5 ,9, 2 , 3]) ) //  [ 2, 3, 5, 9 ]
 
 ```
+
+## Implementando com o uso do `while`.
+
+```javascript
+    function bubbleSort(arr) {
+        const vetor = [...arr];
+        const numeroElementosVetor = vetor.length;
+        let totalMinimoIteracoes = 0;
+        // itera sobre cada elemento do vetor
+        while (totalMinimoIteracoes < numeroElementosVetor) {
+            let iteracaoSecundaria = 0;
+            while (iteracaoSecundaria < numeroElementosVetor) {
+                const posicaoAtual = vetor[iteracaoSecundaria];
+                const proximaPosicao = vetor[iteracaoSecundaria + 1];
+                if(posicaoAtual > proximaPosicao) {
+                    vetor[iteracaoSecundaria + 1] = posicaoAtual;
+                    vetor[iteracaoSecundaria] = proximaPosicao;
+                    // sair do loop
+                    iteracaoSecundaria = numeroElementosVetor;
+                } else {
+                    iteracaoSecundaria++;
+                }
+            }
+            totalMinimoIteracoes++;
+        }
+        
+        return vetor;
+    }
+
+    console.log( bubbleSort([5 ,9, 2 , 3]) ) //  [ 2, 3, 5, 9 ]
+```
