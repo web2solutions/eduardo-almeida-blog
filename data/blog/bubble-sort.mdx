@@ -61,11 +61,11 @@ Pode ser mais vantajoso utlizar o bubble sort quando sabe-se que boa parte do co
             // comparando o valor da posicao atual com o valor da proxima posicao.
             // troque o valor da posicao atual caso o valor da proxima posicao seja maior que o valor atual.
             for(let y = 0; y < numeroElementosVetor; y++) {
-                const posicaoAtual = vetor[y];
-                const proximaPosicao = vetor[y + 1];
-                if(posicaoAtual > proximaPosicao) {
-                    vetor[y + 1] = posicaoAtual;
-                    vetor[y] = proximaPosicao;
+                const valorAtual = vetor[y];
+                const proximoValor = vetor[y + 1];
+                if(valorAtual > proximoValor) {
+                    vetor[y + 1] = valorAtual;
+                    vetor[y] = proximoValor;
                     houveTroca = true;
                 }
             }
@@ -93,11 +93,11 @@ Pode ser mais vantajoso utlizar o bubble sort quando sabe-se que boa parte do co
             let iteracaoSecundaria = 0;
             // itera sobre cada elemento do vetor
             while (iteracaoSecundaria < numeroElementosVetor) {
-                const posicaoAtual = vetor[iteracaoSecundaria];
-                const proximaPosicao = vetor[iteracaoSecundaria + 1];
-                if(posicaoAtual > proximaPosicao) {
-                    vetor[iteracaoSecundaria + 1] = posicaoAtual;
-                    vetor[iteracaoSecundaria] = proximaPosicao;
+                const valorAtual = vetor[iteracaoSecundaria];
+                const proximoValor = vetor[iteracaoSecundaria + 1];
+                if(valorAtual > proximoValor) {
+                    vetor[iteracaoSecundaria + 1] = valorAtual;
+                    vetor[iteracaoSecundaria] = proximoValor;
                     houveTroca = true;
                 }
                 iteracaoSecundaria++;
