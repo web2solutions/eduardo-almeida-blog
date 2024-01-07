@@ -47,3 +47,35 @@ Outros algorítimos possuem `piores casos` ou `complexidade média` substancialm
 como `insertion sort`, geralmente são executados mais rápidos do que o bubble sort. Por essa razão, o bubble sort é raramente utilizado em produção.
 
 Pode ser mais vantajoso utlizar o bubble sort quando sabe-se que boa parte do conteúdo do vetor já se encontra ordenado.
+
+## Implementando com o uso do `for`.
+
+```javascript
+    function bubbleSort(arr) {
+        const vetor = [...arr];
+        const numeroElementosVetor = vetor.length;
+        // itera sobre cada elemento do vetor
+        for(let x = 0; x < numeroElementosVetor; x++) {
+            let houveTroca = false;
+            // para cada elemento do vetor, itere novamente sobre todo o vetor,
+            // comparando o valor da posicao atual com o valor da proxima posicao.
+            // troque o valor da posicao atual caso o valor da proxima posicao seja maior que o valor atual.
+            for(let y = 0; y < numeroElementosVetor; y++) {
+                const posicaoAtual = vetor[y];
+                const proximaPosicao = vetor[y + 1];
+                if(posicaoAtual > proximaPosicao) {
+                    vetor[y + 1] = posicaoAtual;
+                    vetor[y] = proximaPosicao;
+                    houveTroca = true;
+                }
+            }
+            // se não houve troca, o vetor já está ordenado.
+            if(!houveTroca) break;
+        }
+
+        return vetor;
+    }
+
+    console.log( bubbleSort([5 ,9, 2 , 3]) ) //  [ 2, 3, 5, 9 ]
+
+```
