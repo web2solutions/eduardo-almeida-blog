@@ -1,0 +1,49 @@
+---
+title: 'Bubble sort.'
+date: '2024-01-05'
+tags: ['javascript', 'algorithm', 'sorting']
+draft: false
+summary: 'An overview of how to build a bubble sort algorithm using Javascript for portuguese speakers'
+layout: PostSimple
+---
+
+# Bubble sort ou ordenamento em bolha.
+
+
+O Bubble Sort é um algorítimo de ordenação simples que itera repetitivamente sobre cada posição de uma lista, comparando o valor do elemento na posição atual com o valor do elemento 
+na próxima posição, trocando os valores de posição, quando necessário. 
+
+O algorítimo itera repetitivamente sobre cada elemento da lista até que nenhuma troca seja necessária durante a iteração atual.
+
+O algrítimo ordena por comparação e tem o nome de bubble ou bolha, pois os maiores valores são jogados para o topo da lista.
+
+
+## Performance
+
+### Complexidade de tempo:
+
+- `Pior caso`
+
+    O(n^2) comparações, 
+
+    O(n^2) trocas
+
+- `Melhor caso`
+
+    O(n) comparações, 
+
+    O(1) trocas
+
+- `Performance média`
+
+    O(n^2) comparações, 
+
+    O(n^2) trocas
+
+
+Bubble sort tem em `pior caso` a complexidade O(n^2), onde `n` é o número de items a serem sorteados.
+
+Outros algorítimos possuem `piores casos` ou `complexidade média` substancialmente melhores do que bubble sort, geralmente O(n log n). Até mesmo outros algorítimos O(n^2), 
+como `insertion sort`, geralmente são executados mais rápidos do que o bubble sort. Por essa razão, o bubble sort é raramente utilizado em produção.
+
+Pode ser mais vantajoso utlizar o bubble sort quando sabe-se que boa parte do conteúdo do vetor já se encontra ordenado.
