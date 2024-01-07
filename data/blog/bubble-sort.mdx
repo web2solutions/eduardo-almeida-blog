@@ -87,6 +87,7 @@ Pode ser mais vantajoso utlizar o bubble sort quando sabe-se que boa parte do co
         const vetor = [...arr];
         const numeroElementosVetor = vetor.length;
         let totalMinimoIteracoes = 0;
+        let houveTroca = false;
         // itera sobre cada elemento do vetor
         while (totalMinimoIteracoes < numeroElementosVetor) {
             let iteracaoSecundaria = 0;
@@ -96,15 +97,18 @@ Pode ser mais vantajoso utlizar o bubble sort quando sabe-se que boa parte do co
                 if(posicaoAtual > proximaPosicao) {
                     vetor[iteracaoSecundaria + 1] = posicaoAtual;
                     vetor[iteracaoSecundaria] = proximaPosicao;
-                    // sair do loop
-                    totalMinimoIteracoes = numeroElementosVetor;
+                    houveTroca = true;
                 }
                 iteracaoSecundaria++;
             }
-            totalMinimoIteracoes++;
+            if(!houveTroca) {
+                // sair do loop
+                totalMinimoIteracoes = numeroElementosVetor
+            } else {
+                totalMinimoIteracoes++;
+            }
         }
         
-
         return vetor;
     }
 
