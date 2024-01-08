@@ -1,0 +1,93 @@
+---
+title: 'Quick sort - ordenação rápida usando Javascript'
+date: '2024-01-05'
+tags: ['javascript', 'algorithm', 'sorting']
+draft: false
+summary: 'An overview of how to build a quick sort algorithm using Javascript for portuguese speakers'
+layout: PostSimple
+---
+
+# Quick sort ou ordenação rápida usando Javascript
+
+O quick sort é um algorítimo rápido e eficiente de ordenaçãp por comparação não estável. Basea-se na estratégia de `dividir e conquistar`.
+
+
+## A estratégia de Dividir e Conquistar.
+
+Em ciência da computação, `dividir e consquistar` é uma estratégia usada para `quebrar` o problema á ser resolvido em partes menores. 
+Então a solução aplicada na solução de `uma parte menor do seu problema`, será a mesma para resolver todas as outras partes menores resultantes, utilizando recursividade para tal.
+
+
+## Aplicando a técnica de Dividir e Conqquistar para executar ordenação de dados.
+
+Dado um vetor de valores do mesmo tipo e possivelmente desordenado, o primeiro passo é dividir esse vetor em duas partes, e para isso escolhemos uma chave do vetor que será usada como delimitador
+para a divisão do vetor 2 partes. Á essa chave damos o nome de pivô. Ás partes divididas do vetor, poderemos dar o nome de `ladoEsquerdo` e `ladoDireito`.
+
+Os critérios para se escolher qual chave do vetor agirá como pivô podem variar, podendo ser assim o primeiro, o último ou até mesmo o elemento que se encontra no meio do vetor.
+
+
+![Quick sort 1](/static/images/quick1.png)
+
+
+## Performance
+
+### Complexidade de tempo:
+
+- `Pior caso`
+
+    O(n^2) comparações, 
+
+    O(n^2) trocas
+
+- `Melhor caso`
+
+    O(n log n) comparações, 
+
+    O(1) trocas
+
+- `Performance média`
+
+    O(n log n) comparações, 
+
+    O(n log n) trocas
+
+
+
+## Implementando com o uso do `for`.
+
+```javascript
+const quickSort = (vetor) => {
+  // vetor já está ordenado
+  if (vetor.length <= 1) {
+    return vetor;
+  }
+
+  // primeiro elemento do array como pivo
+  let pivot = vetor[0];
+  // armazena numeros menores
+  let subVetorEsquerdo = [];
+  // armazena numeros maiores
+  let subVetorDireito = [];
+
+  // inicia comparacoes apos o pivo
+  for (let i = 1; i < vetor.length; i++) {
+    const valorAtual = vetor[i];
+    if (valorAtual < pivot) {
+      subVetorEsquerdo.push(valorAtual);
+    } else {
+      subVetorDireito.push(valorAtual);
+    }
+  }
+  console.log(`aplicando solução parcial: [...quickSort(${subVetorEsquerdo.join(', ')}), ${pivot}, ...quickSort(${subVetorDireito.join(', ')})]`)
+  return [...quickSort(subVetorEsquerdo), pivot, ...quickSort(subVetorDireito)];
+};
+
+
+console.log(quickSort([5, 3, 7, 6, 2, 9]));
+
+// aplicando solução parcial: [...quickSort(3, 2), 5, ...quickSort(7, 6, 9)]
+// aplicando solução parcial: [...quickSort(2), 3, ...quickSort()]
+// aplicando solução parcial: [...quickSort(6), 7, ...quickSort(9)]
+[ 2, 3, 5, 6, 7, 9 ]
+
+```
