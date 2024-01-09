@@ -135,7 +135,7 @@ const ordenarRapido = (vetor) => {
   return [...ordenarRapido(subVetorEsquerdo), pivo, ...ordenarRapido(subVetorDireito)];
 };
 
-console.log('-------------------------------------> Vetor Desordenado com 100 elementos')
+console.log('-------------------------------------> Vetor Desordenado com 100 elementos diferentes')
 {
   comparacoes = 0
   const arr = [];
@@ -157,7 +157,7 @@ console.log('-------------------------------------> Vetor Desordenado com 100 el
   });
 }
 
-console.log('-------------------------------------> Vetor Ordenado com 100 elementos')
+console.log('-------------------------------------> Vetor Ordenado com 100 elementos diferentes')
 {
   comparacoes = 0
   const arr = [];
@@ -179,7 +179,31 @@ console.log('-------------------------------------> Vetor Ordenado com 100 eleme
     tempo: `${tempo} milliseconds.`,
   });
 }
-console.log('-------------------------------------> Vetor Ordenado com 10 elementos')
+
+console.log('-------------------------------------> Vetor Ordenado com 100 elementos iguais')
+{
+  comparacoes = 0
+  const arr = [];
+  let i = 1;
+  while(arr.length < 100){
+    arr.push(1);
+    i++;
+  }
+  // console.log(arr)
+
+  const timeStart = performance.now();
+  const result = ordenarRapido(arr);
+  const timeEnd = performance.now();
+  const tempo = timeEnd - timeStart;
+  console.log( result );
+
+  console.log({
+    comparacoes,
+    tempo: `${tempo} milliseconds.`,
+  });
+}
+
+console.log('-------------------------------------> Vetor Ordenado com 10 elementos diferentes')
 {
   comparacoes = 0
   const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
@@ -197,8 +221,25 @@ console.log('-------------------------------------> Vetor Ordenado com 10 elemen
   });
 }
 
+console.log('-------------------------------------> Vetor Ordenado com 10 elementos iguais')
+{
+  comparacoes = 0
+  const arr = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
+  console.log(arr)
 
-console.log('-------------------------------------> Vetor Desordenado com 10 elementos')
+  const timeStart = performance.now();
+  const result = ordenarRapido(arr);
+  const timeEnd = performance.now();
+  const tempo = timeEnd - timeStart;
+  console.log( result );
+
+  console.log({
+    comparacoes,
+    tempo: `${tempo} milliseconds.`,
+  });
+}
+
+console.log('-------------------------------------> Vetor Desordenado com 10 elementos diferentes')
 {
   comparacoes = 0
   const arr = [9, 1, 10, 2, 8, 3, 7, 4, 6, 5];
@@ -216,7 +257,7 @@ console.log('-------------------------------------> Vetor Desordenado com 10 ele
   });
 }
 
-console.log('-------------------------------------> Vetor Desordenado com 10 elementos')
+console.log('-------------------------------------> Vetor Desordenado com 10 elementos diferentes')
 {
   comparacoes = 0
   const arr = [];
@@ -237,12 +278,13 @@ console.log('-------------------------------------> Vetor Desordenado com 10 ele
     tempo: `${tempo} milliseconds.`,
   });
 }
+
 ```
 
 #### Resultado
 
 ```bash
--------------------------------------> Vetor Desordenado com 100 elementos
+-------------------------------------> Vetor Desordenado com 100 elementos diferentes
 [
    1,  2,  3,   4,  5,  6,  7,  8,  9, 10, 11, 12,
   13, 14, 15,  16, 17, 18, 19, 20, 21, 22, 23, 24,
@@ -254,8 +296,8 @@ console.log('-------------------------------------> Vetor Desordenado com 10 ele
   85, 86, 87,  88, 89, 90, 91, 92, 93, 94, 95, 96,
   97, 98, 99, 100
 ]
-{ comparacoes: 661, tempo: '0.276652991771698 milliseconds.' }
--------------------------------------> Vetor Ordenado com 100 elementos
+{ comparacoes: 646, tempo: '0.2860829830169678 milliseconds.' }
+-------------------------------------> Vetor Ordenado com 100 elementos diferentes
 [
    1,  2,  3,   4,  5,  6,  7,  8,  9, 10, 11, 12,
   13, 14, 15,  16, 17, 18, 19, 20, 21, 22, 23, 24,
@@ -267,8 +309,21 @@ console.log('-------------------------------------> Vetor Desordenado com 10 ele
   85, 86, 87,  88, 89, 90, 91, 92, 93, 94, 95, 96,
   97, 98, 99, 100
 ]
-{ comparacoes: 4950, tempo: '0.8640609979629517 milliseconds.' }
--------------------------------------> Vetor Ordenado com 10 elementos
+{ comparacoes: 4950, tempo: '0.9176200032234192 milliseconds.' }
+-------------------------------------> Vetor Ordenado com 100 elementos iguais
+[
+  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
+  1, 1, 1, 1
+]
+{ comparacoes: 4950, tempo: '2.252277970314026 milliseconds.' }
+-------------------------------------> Vetor Ordenado com 10 elementos diferentes
 [
   1, 2, 3, 4,  5,
   6, 7, 8, 9, 10
@@ -277,8 +332,18 @@ console.log('-------------------------------------> Vetor Desordenado com 10 ele
   1, 2, 3, 4,  5,
   6, 7, 8, 9, 10
 ]
-{ comparacoes: 45, tempo: '0.24640101194381714 milliseconds.' }
--------------------------------------> Vetor Desordenado com 10 elementos
+{ comparacoes: 45, tempo: '0.01866203546524048 milliseconds.' }
+-------------------------------------> Vetor Ordenado com 10 elementos iguais
+[
+  1, 1, 1, 1, 1,
+  1, 1, 1, 1, 1
+]
+[
+  1, 1, 1, 1, 1,
+  1, 1, 1, 1, 1
+]
+{ comparacoes: 45, tempo: '0.07124799489974976 milliseconds.' }
+-------------------------------------> Vetor Desordenado com 10 elementos diferentes
 [
   9, 1, 10, 2, 8,
   3, 7,  4, 6, 5
@@ -287,15 +352,15 @@ console.log('-------------------------------------> Vetor Desordenado com 10 ele
   1, 2, 3, 4,  5,
   6, 7, 8, 9, 10
 ]
-{ comparacoes: 37, tempo: '0.015797019004821777 milliseconds.' }
--------------------------------------> Vetor Desordenado com 10 elementos
+{ comparacoes: 37, tempo: '0.016131997108459473 milliseconds.' }
+-------------------------------------> Vetor Desordenado com 10 elementos diferentes
 [
-  80, 39, 5, 14, 91,
-  73, 15, 1, 57, 78
+  22, 49, 12, 44, 10,
+  99, 50, 77, 20, 57
 ]
 [
-   1,  5, 14, 15, 39,
-  57, 73, 78, 80, 91
+  10, 12, 20, 22, 44,
+  49, 50, 57, 77, 99
 ]
-{ comparacoes: 22, tempo: '0.014930009841918945 milliseconds.' }
+{ comparacoes: 22, tempo: '0.014750003814697266 milliseconds.' }
 ```
