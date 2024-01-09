@@ -646,36 +646,92 @@ Agora comparando ambos métodos:
 
 ```bash
 -------------------------------------> Vetor Desordenado com 100 elementos diferentes
-{ comparacoes: 674, tempo: '0.26770299673080444 milliseconds.' }
+{
+  comparacoes: 664,
+  trocas: 68,
+  tempo: '0.26751697063446045 milliseconds.'
+}
 -------------------------------------> Vetor Ordenado com 100 elementos diferentes
-{ comparacoes: 4950, tempo: '1.1634199619293213 milliseconds.' }
+{
+  comparacoes: 4950,
+  trocas: 167,
+  tempo: '1.314706027507782 milliseconds.'
+}
 -------------------------------------> Vetor Ordenado com 100 elementos iguais
-{ comparacoes: 4950, tempo: '1.9275910258293152 milliseconds.' }
+{
+  comparacoes: 4950,
+  trocas: 266,
+  tempo: '1.8642060160636902 milliseconds.'
+}
 -------------------------------------> Vetor Ordenado com 10 elementos diferentes
-{ comparacoes: 45, tempo: '0.0188559889793396 milliseconds.' }
+{
+  comparacoes: 45,
+  trocas: 275,
+  tempo: '0.01898103952407837 milliseconds.'
+}
 -------------------------------------> Vetor Ordenado com 10 elementos iguais
-{ comparacoes: 45, tempo: '0.020727038383483887 milliseconds.' }
+{
+  comparacoes: 45,
+  trocas: 284,
+  tempo: '0.021008968353271484 milliseconds.'
+}
 -------------------------------------> Vetor Desordenado com 10 elementos diferentes
-{ comparacoes: 37, tempo: '0.01421898603439331 milliseconds.' }
+{
+  comparacoes: 37,
+  trocas: 292,
+  tempo: '0.013198018074035645 milliseconds.'
+}
 -------------------------------------> Vetor Desordenado com 10 elementos diferentes
-{ comparacoes: 29, tempo: '0.01210397481918335 milliseconds.' }
+{
+  comparacoes: 22,
+  trocas: 297,
+  tempo: '0.010466992855072021 milliseconds.'
+}
 ```
 
 - Dual-Pivot Quicksort
 
 ```bash
 -------------------------------------> Vetor Desordenado com 100 elementos diferentes
-{ comparacoes: 703, tempo: '0.2568820118904114 milliseconds.' }
+{
+  comparacoes: 599,
+  trocas: 208,
+  tempo: '0.33240801095962524 milliseconds.'
+}
 -------------------------------------> Vetor Ordenado com 100 elementos diferentes
-{ comparacoes: 580, tempo: '0.12887901067733765 milliseconds.' }
+{
+  comparacoes: 580,
+  trocas: 100,
+  tempo: '0.1965610384941101 milliseconds.'
+}
 -------------------------------------> Vetor Ordenado com 100 elementos iguais
-{ comparacoes: 361, tempo: '0.13734698295593262 milliseconds.' }
+{
+  comparacoes: 361,
+  trocas: 361,
+  tempo: '0.15630000829696655 milliseconds.'
+}
 -------------------------------------> Vetor Ordenado com 10 elementos diferentes
-{ comparacoes: 29, tempo: '0.02019602060317993 milliseconds.' }
+{
+  comparacoes: 29,
+  trocas: 10,
+  tempo: '0.020038962364196777 milliseconds.'
+}
 -------------------------------------> Vetor Ordenado com 10 elementos iguais
-{ comparacoes: 22, tempo: '0.019711017608642578 milliseconds.' }
+{
+  comparacoes: 22,
+  trocas: 22,
+  tempo: '0.024821996688842773 milliseconds.'
+}
 -------------------------------------> Vetor Desordenado com 10 elementos diferentes
-{ comparacoes: 34, tempo: '0.017503976821899414 milliseconds.' }
+{
+  comparacoes: 34,
+  trocas: 13,
+  tempo: '0.014891982078552246 milliseconds.'
+}
 -------------------------------------> Vetor Desordenado com 10 elementos diferentes
-{ comparacoes: 26, tempo: '0.010358989238739014 milliseconds.' }
+{
+  comparacoes: 29,
+  trocas: 14,
+  tempo: '0.014495015144348145 milliseconds.'
+}
 ```
