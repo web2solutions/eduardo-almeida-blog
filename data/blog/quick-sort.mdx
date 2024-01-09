@@ -118,21 +118,10 @@ Para provar a teoria de o Método de partição de Lomuto pode atingir O(n^2), f
 ```javascript
 let comparacoes = 0
 const ordenarRapido = (vetor) => {
-
-  // caso base
-  // vetor já está ordenado
-  if (vetor.length <= 1) {
-    return vetor;
-  }
-
-  // primeiro elemento do array como pivo
+  if (vetor.length <= 1) return vetor;
   let pivo = vetor[0];
-  // armazena numeros menores
   let subVetorEsquerdo = [];
-  // armazena numeros maiores
   let subVetorDireito = [];
-
-  // inicia comparacoes apos o pivo
   for (let i = 1; i < vetor.length; i++) {
     const valorAtual = vetor[i];
     if (valorAtual < pivo) {
@@ -142,7 +131,6 @@ const ordenarRapido = (vetor) => {
     }
     comparacoes++;
   }
-  console.log(`aplicando solução parcial: [...ordenarRapido(${subVetorEsquerdo.join(', ')}), ${pivo}, ...ordenarRapido(${subVetorDireito.join(', ')})]`)
   return [...ordenarRapido(subVetorEsquerdo), pivo, ...ordenarRapido(subVetorDireito)];
 };
 
