@@ -110,3 +110,198 @@ console.log(
 // aplicando solução parcial: [...[6].ordenarRapido(), 7, ...[9].ordenarRapido()]
 // [ 2, 3, 5, 6, 7, 9 ]
 ```
+
+## Queda de performance
+
+Para provar a teoria de o Método de partição de Lomuto pode atingir O(n^2), faremos testes com vetores com 100 e 100 elementos e vetores ordenados e desordenados.
+
+```javascript
+let comparacoes = 0
+const ordenarRapido = (vetor) => {
+
+  // caso base
+  // vetor já está ordenado
+  if (vetor.length <= 1) {
+    return vetor;
+  }
+
+  // primeiro elemento do array como pivo
+  let pivo = vetor[0];
+  // armazena numeros menores
+  let subVetorEsquerdo = [];
+  // armazena numeros maiores
+  let subVetorDireito = [];
+
+  // inicia comparacoes apos o pivo
+  for (let i = 1; i < vetor.length; i++) {
+    const valorAtual = vetor[i];
+    if (valorAtual < pivo) {
+      subVetorEsquerdo.push(valorAtual);
+    } else {
+      subVetorDireito.push(valorAtual);
+    }
+    comparacoes++;
+  }
+  console.log(`aplicando solução parcial: [...ordenarRapido(${subVetorEsquerdo.join(', ')}), ${pivo}, ...ordenarRapido(${subVetorDireito.join(', ')})]`)
+  return [...ordenarRapido(subVetorEsquerdo), pivo, ...ordenarRapido(subVetorDireito)];
+};
+
+console.log('-------------------------------------> Vetor Desordenado com 100 elementos')
+{
+  const arr = [];
+  while(arr.length < 100){
+      var r = Math.floor(Math.random() * 100) + 1;
+      if(arr.indexOf(r) === -1) arr.push(r);
+  }
+  // console.log(arr)
+
+  const timeStart = performance.now();
+  const result = ordenarRapido(arr);
+  const timeEnd = performance.now();
+  const tempo = timeEnd - timeStart;
+  console.log( result );
+
+  console.log({
+    comparacoes,
+    tempo: `${tempo} milliseconds.`,
+  });
+}
+
+console.log('-------------------------------------> Vetor Ordenado com 100 elementos')
+{
+  const arr = [];
+  let i = 1;
+  while(arr.length < 100){
+    arr.push(i);
+    i++;
+  }
+  // console.log(arr)
+
+  const timeStart = performance.now();
+  const result = ordenarRapido(arr);
+  const timeEnd = performance.now();
+  const tempo = timeEnd - timeStart;
+  console.log( result );
+
+  console.log({
+    comparacoes,
+    tempo: `${tempo} milliseconds.`,
+  });
+}
+console.log('-------------------------------------> Vetor Ordenado com 10 elementos')
+{
+  const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  console.log(arr)
+
+  const timeStart = performance.now();
+  const result = ordenarRapido(arr);
+  const timeEnd = performance.now();
+  const tempo = timeEnd - timeStart;
+  console.log( result );
+
+  console.log({
+    comparacoes,
+    tempo: `${tempo} milliseconds.`,
+  });
+}
+
+
+console.log('-------------------------------------> Vetor Desordenado com 10 elementos')
+{
+  const arr = [9, 1, 10, 2, 8, 3, 7, 4, 6, 5];
+  console.log(arr)
+
+  const timeStart = performance.now();
+  const result = ordenarRapido(arr);
+  const timeEnd = performance.now();
+  const tempo = timeEnd - timeStart;
+  console.log( result );
+
+  console.log({
+    comparacoes,
+    tempo: `${tempo} milliseconds.`,
+  });
+}
+
+console.log('-------------------------------------> Vetor Desordenado com 10 elementos')
+{
+  const arr = [];
+  while(arr.length < 10){
+      var r = Math.floor(Math.random() * 100) + 1;
+      if(arr.indexOf(r) === -1) arr.push(r);
+  }
+  console.log(arr)
+
+  const timeStart = performance.now();
+  const result = ordenarRapido(arr);
+  const timeEnd = performance.now();
+  const tempo = timeEnd - timeStart;
+  console.log( result );
+
+  console.log({
+    comparacoes,
+    tempo: `${tempo} milliseconds.`,
+  });
+}
+```
+
+#### Resultado
+
+```bash
+-------------------------------------> Vetor Desordenado com 100 elementos
+[
+   1,  2,  3,   4,  5,  6,  7,  8,  9, 10, 11, 12,
+  13, 14, 15,  16, 17, 18, 19, 20, 21, 22, 23, 24,
+  25, 26, 27,  28, 29, 30, 31, 32, 33, 34, 35, 36,
+  37, 38, 39,  40, 41, 42, 43, 44, 45, 46, 47, 48,
+  49, 50, 51,  52, 53, 54, 55, 56, 57, 58, 59, 60,
+  61, 62, 63,  64, 65, 66, 67, 68, 69, 70, 71, 72,
+  73, 74, 75,  76, 77, 78, 79, 80, 81, 82, 83, 84,
+  85, 86, 87,  88, 89, 90, 91, 92, 93, 94, 95, 96,
+  97, 98, 99, 100
+]
+{ comparacoes: 639, tempo: '0.3031049966812134 milliseconds.' }
+-------------------------------------> Vetor Ordenado com 100 elementos
+[
+   1,  2,  3,   4,  5,  6,  7,  8,  9, 10, 11, 12,
+  13, 14, 15,  16, 17, 18, 19, 20, 21, 22, 23, 24,
+  25, 26, 27,  28, 29, 30, 31, 32, 33, 34, 35, 36,
+  37, 38, 39,  40, 41, 42, 43, 44, 45, 46, 47, 48,
+  49, 50, 51,  52, 53, 54, 55, 56, 57, 58, 59, 60,
+  61, 62, 63,  64, 65, 66, 67, 68, 69, 70, 71, 72,
+  73, 74, 75,  76, 77, 78, 79, 80, 81, 82, 83, 84,
+  85, 86, 87,  88, 89, 90, 91, 92, 93, 94, 95, 96,
+  97, 98, 99, 100
+]
+{ comparacoes: 5589, tempo: '0.8688299655914307 milliseconds.' }
+-------------------------------------> Vetor Ordenado com 10 elementos
+[
+  1, 2, 3, 4,  5,
+  6, 7, 8, 9, 10
+]
+[
+  1, 2, 3, 4,  5,
+  6, 7, 8, 9, 10
+]
+{ comparacoes: 5634, tempo: '0.23918801546096802 milliseconds.' }
+-------------------------------------> Vetor Desordenado com 10 elementos
+[
+  9, 1, 10, 2, 8,
+  3, 7,  4, 6, 5
+]
+[
+  1, 2, 3, 4,  5,
+  6, 7, 8, 9, 10
+]
+{ comparacoes: 5671, tempo: '0.020415961742401123 milliseconds.' }
+-------------------------------------> Vetor Desordenado com 10 elementos
+[
+  36, 35,  8, 82, 41,
+  24, 43, 85, 12, 44
+]
+[
+   8, 12, 24, 35, 36,
+  41, 43, 44, 82, 85
+]
+{ comparacoes: 5693, tempo: '0.022562026977539062 milliseconds.' }
+```
