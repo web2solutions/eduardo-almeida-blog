@@ -141,7 +141,7 @@ console.log('-------------------------------------> Vetor Desordenado com 100 el
       var r = Math.floor(Math.random() * 100) + 1;
       if(arr.indexOf(r) === -1) arr.push(r);
   }
-  // console.log(arr)
+  console.log(arr)
 
   const timeStart = performance.now();
   const result = ordenarRapido(arr);
@@ -163,7 +163,7 @@ console.log('-------------------------------------> Vetor Ordenado com 100 eleme
     arr.push(i);
     i++;
   }
-  // console.log(arr)
+  console.log(arr)
 
   const timeStart = performance.now();
   const result = ordenarRapido(arr);
@@ -248,7 +248,7 @@ console.log('-------------------------------------> Vetor Desordenado com 10 ele
   85, 86, 87,  88, 89, 90, 91, 92, 93, 94, 95, 96,
   97, 98, 99, 100
 ]
-{ comparacoes: 639, tempo: '0.3031049966812134 milliseconds.' }
+{ comparacoes: 662, tempo: '0.27445900440216064 milliseconds.' }
 -------------------------------------> Vetor Ordenado com 100 elementos
 [
    1,  2,  3,   4,  5,  6,  7,  8,  9, 10, 11, 12,
@@ -261,7 +261,7 @@ console.log('-------------------------------------> Vetor Desordenado com 10 ele
   85, 86, 87,  88, 89, 90, 91, 92, 93, 94, 95, 96,
   97, 98, 99, 100
 ]
-{ comparacoes: 5589, tempo: '0.8688299655914307 milliseconds.' }
+{ comparacoes: 5612, tempo: '0.9438260197639465 milliseconds.' }
 -------------------------------------> Vetor Ordenado com 10 elementos
 [
   1, 2, 3, 4,  5,
@@ -271,7 +271,7 @@ console.log('-------------------------------------> Vetor Desordenado com 10 ele
   1, 2, 3, 4,  5,
   6, 7, 8, 9, 10
 ]
-{ comparacoes: 5634, tempo: '0.23918801546096802 milliseconds.' }
+{ comparacoes: 5657, tempo: '1.2279840111732483 milliseconds.' }
 -------------------------------------> Vetor Desordenado com 10 elementos
 [
   9, 1, 10, 2, 8,
@@ -281,15 +281,15 @@ console.log('-------------------------------------> Vetor Desordenado com 10 ele
   1, 2, 3, 4,  5,
   6, 7, 8, 9, 10
 ]
-{ comparacoes: 5671, tempo: '0.020415961742401123 milliseconds.' }
+{ comparacoes: 5694, tempo: '0.01770198345184326 milliseconds.' }
 -------------------------------------> Vetor Desordenado com 10 elementos
 [
-  36, 35,  8, 82, 41,
-  24, 43, 85, 12, 44
+  90, 83, 14, 38, 81,
+  57, 11, 87, 23, 24
 ]
 [
-   8, 12, 24, 35, 36,
-  41, 43, 44, 82, 85
+  11, 14, 23, 24, 38,
+  57, 81, 83, 87, 90
 ]
-{ comparacoes: 5693, tempo: '0.022562026977539062 milliseconds.' }
+{ comparacoes: 5723, tempo: '0.021468043327331543 milliseconds.' }
 ```
