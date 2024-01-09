@@ -421,3 +421,260 @@ Resultado sem os inputs e vetor final:
 -------------------------------------> Vetor Desordenado com 10 elementos diferentes
 { comparacoes: 29, tempo: '0.01210397481918335 milliseconds.' }
 ```
+
+
+## Implementação com dois pivôs:
+
+
+```javascript
+
+
+function troca(vetor, chaveEsquerda, chaveDireita) {
+  let auxiliar = vetor[chaveEsquerda];
+  vetor[chaveEsquerda] = vetor[chaveDireita];
+  vetor[chaveDireita] = auxiliar;
+}
+
+let comparacoes = 0;
+
+function dividir(vetor, chaveEsquerda, chaveDireita) {
+  let pivo = vetor[Math.floor((chaveDireita + chaveEsquerda) / 2)]; // element do meio
+  while (chaveEsquerda <= chaveDireita) {
+    while (vetor[chaveEsquerda] < pivo) {
+      chaveEsquerda++;
+      comparacoes++;
+    }
+    while (vetor[chaveDireita] > pivo) {
+      chaveDireita--;
+      comparacoes++;
+    }
+    if (chaveEsquerda <= chaveDireita) {
+      troca(vetor, chaveEsquerda, chaveDireita);
+      chaveEsquerda++;
+      chaveDireita--;
+    }
+  }
+  return chaveEsquerda;
+}
+
+
+function ordenarRapido(vetor, chaveEsquerda, chaveDireita) {
+  let pivo;
+  if (vetor.length > 1) {
+    
+    pivo = dividir(vetor, chaveEsquerda, chaveDireita); //pivo returned from dividir
+    
+    if (chaveEsquerda < pivo - 1) { // mais elementos do lado esquerdo do pivo
+      ordenarRapido(vetor, chaveEsquerda, pivo - 1);
+    }
+    if (pivo < chaveDireita) { // mais elementos do lado direito do pivo
+      ordenarRapido(vetor, pivo, chaveDireita);
+    }
+  }
+  return vetor;
+}
+
+console.log('-------------------------------------> Vetor Desordenado com 100 elementos diferentes')
+{
+  comparacoes = 0
+  const arr = [];
+  while(arr.length < 100){
+      var r = Math.floor(Math.random() * 100) + 1;
+      if(arr.indexOf(r) === -1) arr.push(r);
+  }
+  // console.log(arr)
+
+  const timeStart = performance.now();
+  const result = ordenarRapido(arr, 0, arr.length);
+  const timeEnd = performance.now();
+  const tempo = timeEnd - timeStart;
+  // console.log( result );
+
+  console.log({
+    comparacoes,
+    tempo: `${tempo} milliseconds.`,
+  });
+}
+
+console.log('-------------------------------------> Vetor Ordenado com 100 elementos diferentes')
+{
+  comparacoes = 0
+  const arr = [];
+  let i = 1;
+  while(arr.length < 100){
+    arr.push(i);
+    i++;
+  }
+  // console.log(arr)
+
+  const timeStart = performance.now();
+  const result = ordenarRapido(arr, 0, arr.length);
+  const timeEnd = performance.now();
+  const tempo = timeEnd - timeStart;
+  // console.log( result );
+
+  console.log({
+    comparacoes,
+    tempo: `${tempo} milliseconds.`,
+  });
+}
+
+console.log('-------------------------------------> Vetor Ordenado com 100 elementos iguais')
+{
+  comparacoes = 0
+  const arr = [];
+  let i = 1;
+  while(arr.length < 100){
+    arr.push(1);
+    i++;
+  }
+  // console.log(arr)
+
+  const timeStart = performance.now();
+  const result = ordenarRapido(arr, 0, arr.length);
+  const timeEnd = performance.now();
+  const tempo = timeEnd - timeStart;
+  // console.log( result );
+
+  console.log({
+    comparacoes,
+    tempo: `${tempo} milliseconds.`,
+  });
+}
+
+console.log('-------------------------------------> Vetor Ordenado com 10 elementos diferentes')
+{
+  comparacoes = 0
+  const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
+  // console.log(arr)
+
+  const timeStart = performance.now();
+  const result = ordenarRapido(arr, 0, arr.length);
+  const timeEnd = performance.now();
+  const tempo = timeEnd - timeStart;
+  // console.log( result );
+
+  console.log({
+    comparacoes,
+    tempo: `${tempo} milliseconds.`,
+  });
+}
+
+console.log('-------------------------------------> Vetor Ordenado com 10 elementos iguais')
+{
+  comparacoes = 0
+  const arr = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
+  // console.log(arr)
+
+  const timeStart = performance.now();
+  const result = ordenarRapido(arr, 0, arr.length);
+  const timeEnd = performance.now();
+  const tempo = timeEnd - timeStart;
+  // console.log( result );
+
+  console.log({
+    comparacoes,
+    tempo: `${tempo} milliseconds.`,
+  });
+}
+
+console.log('-------------------------------------> Vetor Desordenado com 10 elementos diferentes')
+{
+  comparacoes = 0
+  const arr = [9, 1, 10, 2, 8, 3, 7, 4, 6, 5];
+  // console.log(arr)
+
+  const timeStart = performance.now();
+  const result = ordenarRapido(arr, 0, arr.length);
+  const timeEnd = performance.now();
+  const tempo = timeEnd - timeStart;
+  // console.log( result );
+
+  console.log({
+    comparacoes,
+    tempo: `${tempo} milliseconds.`,
+  });
+}
+
+console.log('-------------------------------------> Vetor Desordenado com 10 elementos diferentes')
+{
+  comparacoes = 0
+  const arr = [];
+  while(arr.length < 10){
+      var r = Math.floor(Math.random() * 100) + 1;
+      if(arr.indexOf(r) === -1) arr.push(r);
+  }
+  // console.log(arr)
+
+  const timeStart = performance.now();
+  const result = ordenarRapido(arr, 0, arr.length);
+  const timeEnd = performance.now();
+  const tempo = timeEnd - timeStart;
+  // console.log( result );
+
+  console.log({
+    comparacoes,
+    tempo: `${tempo} milliseconds.`,
+  });
+}
+```
+
+Resultado sem os inputs e vetor final:
+
+```bash
+-------------------------------------> Vetor Desordenado com 100 elementos diferentes
+{ comparacoes: 546, tempo: '0.2465130090713501 milliseconds.' }
+-------------------------------------> Vetor Ordenado com 100 elementos diferentes
+{ comparacoes: 480, tempo: '0.13525402545928955 milliseconds.' }
+-------------------------------------> Vetor Ordenado com 100 elementos iguais
+{ comparacoes: 0, tempo: '0.1519629955291748 milliseconds.' }
+-------------------------------------> Vetor Ordenado com 10 elementos diferentes
+{ comparacoes: 19, tempo: '0.01681697368621826 milliseconds.' }
+-------------------------------------> Vetor Ordenado com 10 elementos iguais
+{ comparacoes: 0, tempo: '0.020357966423034668 milliseconds.' }
+-------------------------------------> Vetor Desordenado com 10 elementos diferentes
+{ comparacoes: 21, tempo: '0.012739002704620361 milliseconds.' }
+-------------------------------------> Vetor Desordenado com 10 elementos diferentes
+{ comparacoes: 26, tempo: '0.01524198055267334 milliseconds.' }
+```
+
+
+Agora comparando ambos métodos:
+
+- Método de partição de Lomuto
+
+```bash
+-------------------------------------> Vetor Desordenado com 100 elementos diferentes
+{ comparacoes: 674, tempo: '0.26770299673080444 milliseconds.' }
+-------------------------------------> Vetor Ordenado com 100 elementos diferentes
+{ comparacoes: 4950, tempo: '1.1634199619293213 milliseconds.' }
+-------------------------------------> Vetor Ordenado com 100 elementos iguais
+{ comparacoes: 4950, tempo: '1.9275910258293152 milliseconds.' }
+-------------------------------------> Vetor Ordenado com 10 elementos diferentes
+{ comparacoes: 45, tempo: '0.0188559889793396 milliseconds.' }
+-------------------------------------> Vetor Ordenado com 10 elementos iguais
+{ comparacoes: 45, tempo: '0.020727038383483887 milliseconds.' }
+-------------------------------------> Vetor Desordenado com 10 elementos diferentes
+{ comparacoes: 37, tempo: '0.01421898603439331 milliseconds.' }
+-------------------------------------> Vetor Desordenado com 10 elementos diferentes
+{ comparacoes: 29, tempo: '0.01210397481918335 milliseconds.' }
+```
+
+- Dual-Pivot Quicksort
+
+```bash
+-------------------------------------> Vetor Desordenado com 100 elementos diferentes
+{ comparacoes: 546, tempo: '0.2465130090713501 milliseconds.' }
+-------------------------------------> Vetor Ordenado com 100 elementos diferentes
+{ comparacoes: 480, tempo: '0.13525402545928955 milliseconds.' }
+-------------------------------------> Vetor Ordenado com 100 elementos iguais
+{ comparacoes: 0, tempo: '0.1519629955291748 milliseconds.' }
+-------------------------------------> Vetor Ordenado com 10 elementos diferentes
+{ comparacoes: 19, tempo: '0.01681697368621826 milliseconds.' }
+-------------------------------------> Vetor Ordenado com 10 elementos iguais
+{ comparacoes: 0, tempo: '0.020357966423034668 milliseconds.' }
+-------------------------------------> Vetor Desordenado com 10 elementos diferentes
+{ comparacoes: 21, tempo: '0.012739002704620361 milliseconds.' }
+-------------------------------------> Vetor Desordenado com 10 elementos diferentes
+{ comparacoes: 26, tempo: '0.01524198055267334 milliseconds.' }
+```
