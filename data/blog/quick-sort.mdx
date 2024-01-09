@@ -34,8 +34,8 @@ Os critérios para se escolher qual chave do vetor agirá como pivô podem varia
 ## Performance
 
 
-Há diferentes implementações do algorítimo quickSort focando uma melhor performance. O meio mais simples de implementar é o Método de partição de Lomuto, porém este método pode perder performance e
- atingir O(n^2) quando o vetor já está ordenado ou possui muitos elementos iguais. O método método Hoare
+Há diferentes implementações do algorítimo quickSort focando uma melhor performance. O meio mais simples de implementar é o Método de partição de Lomuto, 
+porém este método pode perder performance e atingir O(n^2) quando o vetor já está ordenado ou possui muitos elementos iguais. O método método Hoare nesse caso é mais eficiente.
 
 ### Complexidade de tempo:
 
@@ -57,6 +57,15 @@ Há diferentes implementações do algorítimo quickSort focando uma melhor perf
 
     O(n log n) trocas
 
+### Complexidade de espaço:
+
+- `Pior caso` e `Caso médio`
+
+    O(n)
+
+- `Melhor caso`
+
+    O(n log n)
 
 
 ## Implementação usando o primeiro elemento do vetor como pivô:
