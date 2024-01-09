@@ -59,17 +59,20 @@ Há diferentes implementações do algorítimo quickSort focando uma melhor perf
 
 
 
-## Implementando com o uso do `for`.
+## Implementação usando o primeiro elemento do vetor como pivô:
 
 ```javascript
-const quickSort = (vetor) => {
+Array.prototype.ordenarRapido = function() {
+  const vetor = this;
+
+  // caso base
   // vetor já está ordenado
   if (vetor.length <= 1) {
     return vetor;
   }
 
   // primeiro elemento do array como pivo
-  let pivot = vetor[0];
+  let pivo = vetor[0];
   // armazena numeros menores
   let subVetorEsquerdo = [];
   // armazena numeros maiores
@@ -78,22 +81,23 @@ const quickSort = (vetor) => {
   // inicia comparacoes apos o pivo
   for (let i = 1; i < vetor.length; i++) {
     const valorAtual = vetor[i];
-    if (valorAtual < pivot) {
+    if (valorAtual < pivo) {
       subVetorEsquerdo.push(valorAtual);
     } else {
       subVetorDireito.push(valorAtual);
     }
   }
-  console.log(`aplicando solução parcial: [...quickSort(${subVetorEsquerdo.join(', ')}), ${pivot}, ...quickSort(${subVetorDireito.join(', ')})]`)
-  return [...quickSort(subVetorEsquerdo), pivot, ...quickSort(subVetorDireito)];
+  console.log(`aplicando solução parcial: [...[${subVetorEsquerdo.join(', ')}].ordenarRapido(), ${pivo}, ...[${subVetorDireito.join(', ')}].ordenarRapido()]`)
+  return [...subVetorEsquerdo.ordenarRapido(), pivo, ...subVetorDireito.ordenarRapido()];
 };
 
 
-console.log(quickSort([5, 3, 7, 6, 2, 9]));
+console.log(
+  [5, 3, 7, 6, 2, 9].ordenarRapido()
+);
 
-// aplicando solução parcial: [...quickSort(3, 2), 5, ...quickSort(7, 6, 9)]
-// aplicando solução parcial: [...quickSort(2), 3, ...quickSort()]
-// aplicando solução parcial: [...quickSort(6), 7, ...quickSort(9)]
-[ 2, 3, 5, 6, 7, 9 ]
-
+// aplicando solução parcial: [...[3, 2].ordenarRapido(), 5, ...[7, 6, 9].ordenarRapido()]
+// aplicando solução parcial: [...[2].ordenarRapido(), 3, ...[].ordenarRapido()]
+// aplicando solução parcial: [...[6].ordenarRapido(), 7, ...[9].ordenarRapido()]
+// [ 2, 3, 5, 6, 7, 9 ]
 ```
