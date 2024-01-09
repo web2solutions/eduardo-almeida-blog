@@ -452,6 +452,7 @@ function dividir(vetor, chaveEsquerda, chaveDireita) {
       troca(vetor, chaveEsquerda, chaveDireita);
       chaveEsquerda++;
       chaveDireita--;
+      comparacoes++;
     }
   }
   return chaveEsquerda;
@@ -664,17 +665,17 @@ Agora comparando ambos métodos:
 
 ```bash
 -------------------------------------> Vetor Desordenado com 100 elementos diferentes
-{ comparacoes: 546, tempo: '0.2465130090713501 milliseconds.' }
+{ comparacoes: 703, tempo: '0.2568820118904114 milliseconds.' }
 -------------------------------------> Vetor Ordenado com 100 elementos diferentes
-{ comparacoes: 480, tempo: '0.13525402545928955 milliseconds.' }
+{ comparacoes: 580, tempo: '0.12887901067733765 milliseconds.' }
 -------------------------------------> Vetor Ordenado com 100 elementos iguais
-{ comparacoes: 0, tempo: '0.1519629955291748 milliseconds.' }
+{ comparacoes: 361, tempo: '0.13734698295593262 milliseconds.' }
 -------------------------------------> Vetor Ordenado com 10 elementos diferentes
-{ comparacoes: 19, tempo: '0.01681697368621826 milliseconds.' }
+{ comparacoes: 29, tempo: '0.02019602060317993 milliseconds.' }
 -------------------------------------> Vetor Ordenado com 10 elementos iguais
-{ comparacoes: 0, tempo: '0.020357966423034668 milliseconds.' }
+{ comparacoes: 22, tempo: '0.019711017608642578 milliseconds.' }
 -------------------------------------> Vetor Desordenado com 10 elementos diferentes
-{ comparacoes: 21, tempo: '0.012739002704620361 milliseconds.' }
+{ comparacoes: 34, tempo: '0.017503976821899414 milliseconds.' }
 -------------------------------------> Vetor Desordenado com 10 elementos diferentes
-{ comparacoes: 26, tempo: '0.01524198055267334 milliseconds.' }
+{ comparacoes: 26, tempo: '0.010358989238739014 milliseconds.' }
 ```
