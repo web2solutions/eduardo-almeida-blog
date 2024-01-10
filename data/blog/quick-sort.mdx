@@ -97,7 +97,8 @@ Array.prototype.ordenarRapido = function() {
     }
   }
   console.log(`aplicando solução parcial: [...[${subVetorEsquerdo.join(', ')}].ordenarRapido(), ${pivo}, ...[${subVetorDireito.join(', ')}].ordenarRapido()]`)
-  return [...subVetorEsquerdo.ordenarRapido(), pivo, ...subVetorDireito.ordenarRapido()];
+  
+  return subVetorEsquerdo.ordenarRapido().concat([pivo] , subVetorDireito.ordenarRapido());
 };
 
 
@@ -135,7 +136,8 @@ const ordenarRapido = (vetor) => {
     trocas++;
   }
   trocas++;
-  return [...ordenarRapido(subVetorEsquerdo), pivo, ...ordenarRapido(subVetorDireito)];
+  
+  return ordenarRapido(subVetorEsquerdo).concat([pivo] , ordenarRapido(subVetorDireito));
 };
 
 console.log('-------------------------------------> Vetor Desordenado com 100 elementos diferentes')
