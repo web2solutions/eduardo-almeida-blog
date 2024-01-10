@@ -306,6 +306,9 @@ console.log('-------------------------------------> Vetor Desordenado com 10 ele
 
 ## Implementação do quick sorte com dois pivôs:
 
+Dentre as as tentativas de melhoria de performance do algorítimo, podemos citar a implementação `Dual-Pivot Quicksort`, particionando o o vetor de entrada em 3 partes e utlizando 2 pivôs.
+
+Essa abordagem é mais performática que o método de Lomuto, por exemplo, quando há uma entrada de dados consideravelmente maior.
 
 ```javascript
 function troca(vetor, chaveEsquerda, chaveDireita) {
