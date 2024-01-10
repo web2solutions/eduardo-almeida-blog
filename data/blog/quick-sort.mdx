@@ -119,6 +119,7 @@ Arquivo `quicksort2b.js`.
 
 ```javascript
 let comparacoes = 0
+let trocas = 0
 const ordenarRapido = (vetor) => {
   if (vetor.length <= 1) return vetor;
   let pivo = vetor[0];
@@ -133,151 +134,151 @@ const ordenarRapido = (vetor) => {
     }
     comparacoes++;
   }
-  
+  trocas++;
   return [...ordenarRapido(subVetorEsquerdo), pivo, ...ordenarRapido(subVetorDireito)];
 };
 
 console.log('-------------------------------------> Vetor Desordenado com 100 elementos diferentes')
 {
   comparacoes = 0
+  trocas = 0
   const arr = [];
   while(arr.length < 100){
       var r = Math.floor(Math.random() * 100) + 1;
       if(arr.indexOf(r) === -1) arr.push(r);
   }
-  console.log(arr)
+  // console.log(arr)
 
   const timeStart = performance.now();
   const result = ordenarRapido(arr);
   const timeEnd = performance.now();
   const tempo = timeEnd - timeStart;
-  console.log( result );
+  // console.log( result );
 
   console.log({
-    comparacoes,
-    tempo: `${tempo} milliseconds.`,
+    comparacoes, trocas, tempo,
   });
 }
 
 console.log('-------------------------------------> Vetor Ordenado com 100 elementos diferentes')
 {
   comparacoes = 0
+  trocas = 0
   const arr = [];
   let i = 1;
   while(arr.length < 100){
     arr.push(i);
     i++;
   }
-  console.log(arr)
+  // console.log(arr)
 
   const timeStart = performance.now();
   const result = ordenarRapido(arr);
   const timeEnd = performance.now();
   const tempo = timeEnd - timeStart;
-  console.log( result );
+  // console.log( result );
 
   console.log({
-    comparacoes,
-    tempo: `${tempo} milliseconds.`,
+    comparacoes, trocas, tempo,
   });
 }
 
 console.log('-------------------------------------> Vetor Ordenado com 100 elementos iguais')
 {
   comparacoes = 0
+  trocas = 0
   const arr = [];
   let i = 1;
   while(arr.length < 100){
     arr.push(1);
     i++;
   }
-  console.log(arr)
+  // console.log(arr)
 
   const timeStart = performance.now();
   const result = ordenarRapido(arr);
   const timeEnd = performance.now();
   const tempo = timeEnd - timeStart;
-  console.log( result );
+  // console.log( result );
 
   console.log({
-    comparacoes,
-    tempo: `${tempo} milliseconds.`,
+    comparacoes, trocas, tempo,
   });
 }
 
 console.log('-------------------------------------> Vetor Ordenado com 10 elementos diferentes')
 {
   comparacoes = 0
+  trocas = 0
   const arr = [1, 2, 3, 4, 5, 6, 7, 8, 9, 10];
-  console.log(arr)
+  // console.log(arr)
 
   const timeStart = performance.now();
   const result = ordenarRapido(arr);
   const timeEnd = performance.now();
   const tempo = timeEnd - timeStart;
-  console.log( result );
+  // console.log( result );
 
   console.log({
-    comparacoes,
-    tempo: `${tempo} milliseconds.`,
+    comparacoes, trocas, tempo,
   });
 }
 
 console.log('-------------------------------------> Vetor Ordenado com 10 elementos iguais')
 {
   comparacoes = 0
+  trocas = 0
   const arr = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1];
-  console.log(arr)
+  // console.log(arr)
 
   const timeStart = performance.now();
   const result = ordenarRapido(arr);
   const timeEnd = performance.now();
   const tempo = timeEnd - timeStart;
-  console.log( result );
+  // console.log( result );
 
   console.log({
-    comparacoes,
-    tempo: `${tempo} milliseconds.`,
+    comparacoes, trocas, tempo,
   });
 }
 
 console.log('-------------------------------------> Vetor Desordenado com 10 elementos diferentes')
 {
   comparacoes = 0
+  trocas = 0
   const arr = [9, 1, 10, 2, 8, 3, 7, 4, 6, 5];
-  console.log(arr)
+  // console.log(arr)
 
   const timeStart = performance.now();
   const result = ordenarRapido(arr);
   const timeEnd = performance.now();
   const tempo = timeEnd - timeStart;
-  console.log( result );
+  // console.log( result );
 
   console.log({
-    comparacoes,
-    tempo: `${tempo} milliseconds.`,
+    comparacoes, trocas, tempo,
   });
 }
 
 console.log('-------------------------------------> Vetor Desordenado com 10 elementos diferentes')
 {
   comparacoes = 0
+  trocas = 0
   const arr = [];
   while(arr.length < 10){
       var r = Math.floor(Math.random() * 100) + 1;
       if(arr.indexOf(r) === -1) arr.push(r);
   }
-  console.log(arr)
+  // console.log(arr)
 
   const timeStart = performance.now();
   const result = ordenarRapido(arr);
   const timeEnd = performance.now();
   const tempo = timeEnd - timeStart;
-  console.log( result );
+  // console.log( result );
 
   console.log({
-    comparacoes,
-    tempo: `${tempo} milliseconds.`,
+    comparacoes, trocas, tempo,
   });
 }
 ```
@@ -285,150 +286,28 @@ console.log('-------------------------------------> Vetor Desordenado com 10 ele
 #### Resultado
 
 ```bash
-josealmeida@MacBook challenges-problems-solving % node -v
-v18.8.0
-
-josealmeida@MacBook challenges-problems-solving % node quicksort2b.js
 -------------------------------------> Vetor Desordenado com 100 elementos diferentes
-[
-  11, 40, 94, 67, 84, 29, 33, 17, 73, 34, 47,  91,
-  44, 69, 62,  2, 56, 61, 39, 51,  6, 16, 43,  10,
-  89, 65, 48, 90, 13, 80, 46, 15,  8, 26, 53, 100,
-  58, 92, 42, 27, 20,  5, 38, 59, 32, 66, 22,  97,
-  98, 95, 75, 78, 49, 68, 88, 79, 14,  1, 71,  25,
-  70, 31, 50, 77, 60, 74, 21, 35, 24, 36, 57,  23,
-  86, 54, 52, 55, 18, 76, 64,  3, 28, 81, 30,  99,
-  87, 82, 96,  9, 93, 85, 45, 41, 72,  7, 12,  19,
-  63, 37,  4, 83
-]
-[
-   1,  2,  3,   4,  5,  6,  7,  8,  9, 10, 11, 12,
-  13, 14, 15,  16, 17, 18, 19, 20, 21, 22, 23, 24,
-  25, 26, 27,  28, 29, 30, 31, 32, 33, 34, 35, 36,
-  37, 38, 39,  40, 41, 42, 43, 44, 45, 46, 47, 48,
-  49, 50, 51,  52, 53, 54, 55, 56, 57, 58, 59, 60,
-  61, 62, 63,  64, 65, 66, 67, 68, 69, 70, 71, 72,
-  73, 74, 75,  76, 77, 78, 79, 80, 81, 82, 83, 84,
-  85, 86, 87,  88, 89, 90, 91, 92, 93, 94, 95, 96,
-  97, 98, 99, 100
-]
-{ comparacoes: 614, tempo: '0.3856779932975769 milliseconds.' }
+{ comparacoes: 579, trocas: 65, tempo: 0.25468599796295166 }
 -------------------------------------> Vetor Ordenado com 100 elementos diferentes
-[
-   1,  2,  3,   4,  5,  6,  7,  8,  9, 10, 11, 12,
-  13, 14, 15,  16, 17, 18, 19, 20, 21, 22, 23, 24,
-  25, 26, 27,  28, 29, 30, 31, 32, 33, 34, 35, 36,
-  37, 38, 39,  40, 41, 42, 43, 44, 45, 46, 47, 48,
-  49, 50, 51,  52, 53, 54, 55, 56, 57, 58, 59, 60,
-  61, 62, 63,  64, 65, 66, 67, 68, 69, 70, 71, 72,
-  73, 74, 75,  76, 77, 78, 79, 80, 81, 82, 83, 84,
-  85, 86, 87,  88, 89, 90, 91, 92, 93, 94, 95, 96,
-  97, 98, 99, 100
-]
-[
-   1,  2,  3,   4,  5,  6,  7,  8,  9, 10, 11, 12,
-  13, 14, 15,  16, 17, 18, 19, 20, 21, 22, 23, 24,
-  25, 26, 27,  28, 29, 30, 31, 32, 33, 34, 35, 36,
-  37, 38, 39,  40, 41, 42, 43, 44, 45, 46, 47, 48,
-  49, 50, 51,  52, 53, 54, 55, 56, 57, 58, 59, 60,
-  61, 62, 63,  64, 65, 66, 67, 68, 69, 70, 71, 72,
-  73, 74, 75,  76, 77, 78, 79, 80, 81, 82, 83, 84,
-  85, 86, 87,  88, 89, 90, 91, 92, 93, 94, 95, 96,
-  97, 98, 99, 100
-]
-{ comparacoes: 4950, tempo: '1.5809809565544128 milliseconds.' }
+{ comparacoes: 4950, trocas: 99, tempo: 1.1295549869537354 }
 -------------------------------------> Vetor Ordenado com 100 elementos iguais
-[
-  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-  1, 1, 1, 1
-]
-[
-  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-  1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1,
-  1, 1, 1, 1
-]
-{ comparacoes: 4950, tempo: '1.0704140067100525 milliseconds.' }
+{ comparacoes: 4950, trocas: 99, tempo: 1.880210041999817 }
 -------------------------------------> Vetor Ordenado com 10 elementos diferentes
-[
-  1, 2, 3, 4,  5,
-  6, 7, 8, 9, 10
-]
-[
-  1, 2, 3, 4,  5,
-  6, 7, 8, 9, 10
-]
-{ comparacoes: 45, tempo: '0.01712501049041748 milliseconds.' }
+{ comparacoes: 45, trocas: 9, tempo: 0.019402027130126953 }
 -------------------------------------> Vetor Ordenado com 10 elementos iguais
-[
-  1, 1, 1, 1, 1,
-  1, 1, 1, 1, 1
-]
-[
-  1, 1, 1, 1, 1,
-  1, 1, 1, 1, 1
-]
-{ comparacoes: 45, tempo: '0.02130800485610962 milliseconds.' }
+{ comparacoes: 45, trocas: 9, tempo: 0.020323991775512695 }
 -------------------------------------> Vetor Desordenado com 10 elementos diferentes
-[
-  9, 1, 10, 2, 8,
-  3, 7,  4, 6, 5
-]
-[
-  1, 2, 3, 4,  5,
-  6, 7, 8, 9, 10
-]
-{ comparacoes: 37, tempo: '0.017708957195281982 milliseconds.' }
+{ comparacoes: 37, trocas: 8, tempo: 0.014391064643859863 }
 -------------------------------------> Vetor Desordenado com 10 elementos diferentes
-[
-  84, 62, 36, 23, 55,
-  10, 64, 66, 50, 47
-]
-[
-  10, 23, 36, 47, 50,
-  55, 62, 64, 66, 84
-]
-{ comparacoes: 27, tempo: '0.0066100358963012695 milliseconds.' }
-```
-
-Resultado sem os inputs e vetor final:
-
-```bash
--------------------------------------> Vetor Desordenado com 100 elementos diferentes
-{ comparacoes: 674, tempo: '0.26770299673080444 milliseconds.' }
--------------------------------------> Vetor Ordenado com 100 elementos diferentes
-{ comparacoes: 4950, tempo: '1.1634199619293213 milliseconds.' }
--------------------------------------> Vetor Ordenado com 100 elementos iguais
-{ comparacoes: 4950, tempo: '1.9275910258293152 milliseconds.' }
--------------------------------------> Vetor Ordenado com 10 elementos diferentes
-{ comparacoes: 45, tempo: '0.0188559889793396 milliseconds.' }
--------------------------------------> Vetor Ordenado com 10 elementos iguais
-{ comparacoes: 45, tempo: '0.020727038383483887 milliseconds.' }
--------------------------------------> Vetor Desordenado com 10 elementos diferentes
-{ comparacoes: 37, tempo: '0.01421898603439331 milliseconds.' }
--------------------------------------> Vetor Desordenado com 10 elementos diferentes
-{ comparacoes: 29, tempo: '0.01210397481918335 milliseconds.' }
+{ comparacoes: 20, trocas: 6, tempo: 0.012804031372070312 }
 ```
 
 
-## Implementação com dois pivôs:
+
+## Implementação do quick sorte com dois pivôs:
 
 
 ```javascript
-
-
 function troca(vetor, chaveEsquerda, chaveDireita) {
   let auxiliar = vetor[chaveEsquerda];
   vetor[chaveEsquerda] = vetor[chaveDireita];
