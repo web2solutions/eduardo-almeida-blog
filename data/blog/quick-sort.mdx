@@ -316,6 +316,51 @@ Dentre as as tentativas de melhoria de performance do algorítimo, podemos citar
 Essa abordagem é mais performática que o método de Lomuto, por exemplo, quando há uma entrada de dados consideravelmente maior.
 
 ```javascript
+function troca(vetor, chaveEsquerda, chaveDireita) {
+  let auxiliar = vetor[chaveEsquerda];
+  vetor[chaveEsquerda] = vetor[chaveDireita];
+  vetor[chaveDireita] = auxiliar;
+}
+
+function dividir(vetor, chaveEsquerda, chaveDireita) {
+  let pivo = vetor[Math.floor((chaveDireita + chaveEsquerda) / 2)]; // element do meio
+  while (chaveEsquerda <= chaveDireita) {
+    while (vetor[chaveEsquerda] < pivo) {
+      chaveEsquerda++;
+    }
+    while (vetor[chaveDireita] > pivo) {
+      chaveDireita--;
+    }
+    if (chaveEsquerda <= chaveDireita) {
+      troca(vetor, chaveEsquerda, chaveDireita);
+      chaveEsquerda++;
+      chaveDireita--;
+    }
+  }
+  return chaveEsquerda;
+}
+
+function ordenarRapido(vetor, chaveEsquerda, chaveDireita) {
+  let pivo;
+  if (vetor.length > 1) {
+    
+    pivo = dividir(vetor, chaveEsquerda, chaveDireita); //pivo returned from dividir
+    
+    if (chaveEsquerda < pivo - 1) { // mais elementos do lado esquerdo do pivo
+      ordenarRapido(vetor, chaveEsquerda, pivo - 1);
+    }
+    if (pivo < chaveDireita) { // mais elementos do lado direito do pivo
+      ordenarRapido(vetor, pivo, chaveDireita);
+    }
+  }
+  return vetor;
+}
+```
+
+### Testando a performance
+
+
+```javascript
 
 
 let trocas = 0;
@@ -522,19 +567,19 @@ Resultado:
 
 ```bash
 -------------------------------------> Vetor Desordenado com 100 elementos diferentes
-{ comparacoes: 648, trocas: 198, tempo: 0.3577460050582886 }
+{ comparacoes: 648, trocas: 198, tempo: 0.3790459632873535 }
 -------------------------------------> Vetor Ordenado com 100 elementos diferentes
-{ comparacoes: 580, trocas: 100, tempo: 0.08000099658966064 }
+{ comparacoes: 580, trocas: 100, tempo: 0.08041703701019287 }
 -------------------------------------> Vetor Ordenado com 100 elementos iguais
-{ comparacoes: 361, trocas: 361, tempo: 0.07821798324584961 }
+{ comparacoes: 361, trocas: 361, tempo: 0.07846701145172119 }
 -------------------------------------> Vetor Ordenado com 10 elementos diferentes
-{ comparacoes: 29, trocas: 10, tempo: 0.014847993850708008 }
+{ comparacoes: 29, trocas: 10, tempo: 0.013962030410766602 }
 -------------------------------------> Vetor Ordenado com 10 elementos iguais
-{ comparacoes: 22, trocas: 22, tempo: 0.15216994285583496 }
+{ comparacoes: 22, trocas: 22, tempo: 0.1363229751586914 }
 -------------------------------------> Vetor Desordenado com 10 elementos diferentes
-{ comparacoes: 34, trocas: 13, tempo: 0.011284947395324707 }
+{ comparacoes: 34, trocas: 13, tempo: 0.010295987129211426 }
 -------------------------------------> Vetor Desordenado com 10 elementos diferentes
-{ comparacoes: 29, trocas: 15, tempo: 0.011097908020019531 }
+{ comparacoes: 36, trocas: 14, tempo: 0.009860038757324219 }
 ```
 
 
@@ -564,17 +609,17 @@ Agora comparando ambos métodos:
 
 ```bash
 -------------------------------------> Vetor Desordenado com 100 elementos diferentes
-{ comparacoes: 648, trocas: 198, tempo: 0.3577460050582886 }
+{ comparacoes: 648, trocas: 198, tempo: 0.3790459632873535 }
 -------------------------------------> Vetor Ordenado com 100 elementos diferentes
-{ comparacoes: 580, trocas: 100, tempo: 0.08000099658966064 }
+{ comparacoes: 580, trocas: 100, tempo: 0.08041703701019287 }
 -------------------------------------> Vetor Ordenado com 100 elementos iguais
-{ comparacoes: 361, trocas: 361, tempo: 0.07821798324584961 }
+{ comparacoes: 361, trocas: 361, tempo: 0.07846701145172119 }
 -------------------------------------> Vetor Ordenado com 10 elementos diferentes
-{ comparacoes: 29, trocas: 10, tempo: 0.014847993850708008 }
+{ comparacoes: 29, trocas: 10, tempo: 0.013962030410766602 }
 -------------------------------------> Vetor Ordenado com 10 elementos iguais
-{ comparacoes: 22, trocas: 22, tempo: 0.15216994285583496 }
+{ comparacoes: 22, trocas: 22, tempo: 0.1363229751586914 }
 -------------------------------------> Vetor Desordenado com 10 elementos diferentes
-{ comparacoes: 34, trocas: 13, tempo: 0.011284947395324707 }
+{ comparacoes: 34, trocas: 13, tempo: 0.010295987129211426 }
 -------------------------------------> Vetor Desordenado com 10 elementos diferentes
-{ comparacoes: 29, trocas: 15, tempo: 0.011097908020019531 }
+{ comparacoes: 36, trocas: 14, tempo: 0.009860038757324219 }
 ```
